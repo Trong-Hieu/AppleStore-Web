@@ -1,1 +1,35 @@
-<p>check-out works!</p>
+<div class="container m-5">
+
+  <h1>Shipping</h1>
+
+  <form #f="ngForm" (ngSubmit) = "save(f.value)">
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input #name = "ngModel" ngModel type="text" name="name" id="name" class="form-control" required>
+      <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input #address = "ngModel" ngModel type="text" name="address" id="address" class="form-control" required>
+      <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
+        Address is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input #city = "ngModel" ngModel type="text" name="city" id="city" class="form-control" required>
+      <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+        City is required
+      </div>
+    </div>
+
+    <button class="btn btn-outline-dark">Get Order</button>
+
+  </form>
+
+</div>
