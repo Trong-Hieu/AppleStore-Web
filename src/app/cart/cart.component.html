@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <!-- <div *ngFor = "let item of items">
+    <div class="d-flex mt-3">
+      <img src={{item.image}} alt="" width="100" height="100">
+      <div>
+        <span>{{item.name}} - {{item.price | currency}}</span>
+      </div>
+    </div>
+  </div> -->
+
+  <h1>Shopping Cart</h1>
+
+  <!-- inside ng-cotainer we have other elements that need access to the shopping card object -->
+  <div class="row col-10" *ngIf="cart$ | async as cart">
+      <p>
+        You have {{ cart.totalItemsCount }} items in your shopping cart.
+      </p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th class="text-center" style="width: 230px">Quantity</th>
+        <th class="text-right" style="width: 200px">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of cart.items">
+          <td>
+            <img [src]="item.product.imageUrl" width="80" height="80" alt="">
+          </td>
+          <td> {{ item.product.title }}</td>
+          <td>
+              <div class="row no-gutters flex-center-align">
+                  <div class="col-2">
+                    <button (click)="removeFromCart(item.product)" class="btn btn-outline-dark btn-block">-</button>
+                  </div>
+                  <div class="col sm-setup">
+                    <div class="text-center">
+                      {{ item.quantity }} In Cart
+                    </div>
+                  </div>
+                  <div class="col-2">
+                    <button (click)="addToCart(item.product)" class="btn btn-outline-dark btn-block">+</button>
+                  </div>
+                </div>
+          </td>
+          <td class="text-right"> {{ item.totalPrice | currency }} </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th class="text-right">{{ cart.totalPrice | currency }}</th>
+        </tr>
+      </tfoot>
+  </table>
+
+  <button class="btn btn-outline-danger btn-sm" (click)="clearCart()">
+    Clear Shopping Cart
+  </button>
+
+</div>
+
+</div>

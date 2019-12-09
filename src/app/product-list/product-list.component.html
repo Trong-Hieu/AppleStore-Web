@@ -1,0 +1,79 @@
+
+<div>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="ml-5 pl-3">
+    <a routerLink = "/">
+        <img src="assets/Images/apple (1).png"
+        width="30" height="30" class="d-inline-block align-top" alt="">
+    </a>
+  </div>
+  <ul class="navbar-nav" *ngFor="let c of (category$ | async)">
+    <li class="nav-item ml-5 mr-5 pl-3 pr-3">
+      <a class="nav-link text-light" routerLink="/" [queryParams] = "{ category: c.key}"
+      [class.active] = "category === c.key">
+          {{ c.payload.val().name }}
+      </a>
+    </li>
+
+  </ul>
+
+</nav>
+
+<div class="container mt-5 ">
+
+</div>
+
+
+  <div class="row">
+
+    <div *ngFor = "let product of filteredProducts">
+      <div class="col-4 mr-5 mt-5">
+
+        <div class="card" style="width: 18rem;">
+
+          <a [routerLink] = "['/products', product.id]" [title] = "product.title + ' details'">
+            <img class="card-img-top" src={{product.imageUrl}} alt="Card image cap">
+          </a>
+
+            <div class="card-body">
+
+              <h5 class="card-title">{{product.title}}</h5>
+              <h6>Price: {{product.price | currency}}</h6>
+              <p class="card-text"></p>
+
+              <!-- <ng-container *ngIf="cart$ | async as cart"> -->
+
+              <div>
+                <button *ngIf="getQuantity(product) === 0; else updateQuantity" class="btn btn-outline-dark btn-block"
+                (click) = "addToCart(product)">Add to card</button>
+
+                <ng-template #updateQuantity>
+                  <!-- <product-quantity></product-quantity> -->
+                  <div class="row no-gutters flex-center-align">
+                      <div class="col-2">
+                        <button (click)="removeFromCart(product)" class="btn btn-outline-dark btn-block">-</button>
+                      </div>
+                      <div class="col sm-setup">
+                        <div class="text-center">
+                          {{ getQuantity(product) }} In Cart
+
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <button (click)="addToCart(product)" class="btn btn-outline-dark btn-block">+</button>
+                      </div>
+                    </div>
+                </ng-template>
+              </div>
+
+              <!-- </ng-container> -->
+
+
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
