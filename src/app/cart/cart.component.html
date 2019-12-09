@@ -16,7 +16,7 @@
         You have {{ cart.totalItemsCount }} items in your shopping cart.
       </p>
 
-  <table class="table">
+  <table *ngIf="cart.items.length" class="table">
     <thead>
       <tr>
         <th></th>
@@ -59,9 +59,17 @@
       </tfoot>
   </table>
 
-  <button class="btn btn-outline-danger btn-sm" (click)="clearCart()">
+  <div class="row col-12 justify-content-end">
+  <button *ngIf="cart.items.length" class="btn btn-outline-primary " routerLink = "/check-out">
+    Check Out
+  </button>
+
+  <div class="w-100"></div>
+
+  <button *ngIf="cart.items.length" class="btn btn-outline-danger mt-2" (click)="clearCart()">
     Clear Shopping Cart
   </button>
+  </div>
 
 </div>
 
