@@ -34,6 +34,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { OrderService } from './order.service';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     UserService,
     AdminAuthGuardService,
     CategoryService,
-    ProductService
+    ProductService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
