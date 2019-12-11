@@ -33,7 +33,7 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
-import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+//import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { OrderService } from './order.service';
 
 @NgModule({
@@ -51,7 +51,7 @@ import { OrderService } from './order.service';
     LoginComponent,
     MyOrderComponent,
     ProductFormComponent,
-    ProductQuantityComponent,
+    //ProductQuantityComponent,
 
   ],
   imports: [
